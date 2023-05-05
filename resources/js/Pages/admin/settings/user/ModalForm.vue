@@ -134,16 +134,15 @@ const create = async () => {
                     :errorMessage="formError.name" @update:modelValue="formError.name = ''" />
                 <VInput placeholder="Insert Email" label="Email" :required="true" v-model="form.email"
                     :errorMessage="formError.email" @update:modelValue="formError.email = ''"
-                    type="email" />
+                    type="email" :disabled="additional.is_demo && form.email === 'superadmin@pos.com'"/>
                 <div class="col-span-2">
                     <VSelect placeholder="Choose Role" :required="true" v-model="form.role_id" :options="additional.role_list"
                         label="Role" :errorMessage="formError.role_id" @update:modelValue="formError.role_id = ''" />
                 </div>
                 <VInput placeholder="Insert Password" label="Password" :required="!updateAction" v-model="form.password"
-                    :errorMessage="formError.password" @update:modelValue="formError.password = ''" type="password" />
+                    :errorMessage="formError.password" @update:modelValue="formError.password = ''" type="password" :disabled="additional.is_demo && form.email === 'superadmin@pos.com'"/>
                 <VInput placeholder="Confirm Password" label="Confirm Password" :required="!updateAction" v-model="form.password_confirmation"
-                    :errorMessage="formError.password_confirmation" @update:modelValue="formError.password_confirmation = '', formError.password = ''"
-                    type="password" />
+                    :errorMessage="formError.password_confirmation" @update:modelValue="formError.password_confirmation = '', formError.password = ''" :disabled="additional.is_demo && form.email === 'superadmin@pos.com'" type="password" />
             </div>
         </template>
         <template v-slot:footer>

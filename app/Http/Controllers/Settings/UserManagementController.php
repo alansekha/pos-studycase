@@ -26,6 +26,7 @@ class UserManagementController extends Controller
             "title" => 'POS | User managements',
             "additional" => [
                 'role_list' => $this->getRoleOptions->handle(),
+                'is_demo' => config('app.is_demo')
             ]
         ]);
     }
