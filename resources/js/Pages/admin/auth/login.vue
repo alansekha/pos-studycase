@@ -6,7 +6,7 @@ export default {
 </script>
 <script setup>
 import axios from "axios";
-import { string } from "vue-types";
+import { string, bool } from "vue-types";
 import { notify } from "notiwind";
 import { ref, reactive } from "vue";
 import VInput from "@/components/VInput/index.vue";
@@ -14,7 +14,10 @@ import VButton from "@/components/VButton/index.vue";
 import { Head } from "@inertiajs/inertia-vue3";
 
 const show = ref(false);
-const form = reactive({});
+const form = reactive({
+    email: props.isDemo ? "superadmin@pos.com" : null,
+    password: props.isDemo ? "rahasia123" : null
+});
 const isLoading = ref(false)
 const login = async () => {
     isLoading.value = true
@@ -30,7 +33,8 @@ const login = async () => {
 };
 
 const props = defineProps({
-    title: string()
+    title: string(),
+    isDemo: bool()
 })
 </script>
 
