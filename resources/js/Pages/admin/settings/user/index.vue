@@ -213,7 +213,7 @@ onMounted(() => {
                                 <span>Edit</span>
                             </div>
                         </li>
-                        <li class="cursor-pointer hover:bg-slate-100">
+                        <li class="cursor-pointer hover:bg-slate-100" :class="{'hidden': additional.is_demo && data.email === 'superadmin@pos.com'}">
                             <div class="flex justify-between items-center space-x-2 p-3" @click="alertDelete(data)">
                                 <span>
                                     <VTrash color="danger" />
