@@ -137,7 +137,7 @@ const create = async () => {
                     type="email" :disabled="additional.is_demo && form.email === 'superadmin@pos.com'"/>
                 <div class="col-span-2">
                     <VSelect placeholder="Choose Role" :required="true" v-model="form.role_id" :options="additional.role_list"
-                        label="Role" :errorMessage="formError.role_id" @update:modelValue="formError.role_id = ''" />
+                        label="Role" :errorMessage="formError.role_id" @update:modelValue="formError.role_id = ''" :disabled="additional.is_demo && form.email === 'superadmin@pos.com'"/>
                 </div>
                 <VInput placeholder="Insert Password" label="Password" :required="!updateAction" v-model="form.password"
                     :errorMessage="formError.password" @update:modelValue="formError.password = ''" type="password" :disabled="additional.is_demo && form.email === 'superadmin@pos.com'"/>
