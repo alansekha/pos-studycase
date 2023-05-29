@@ -9,7 +9,7 @@ import { notify } from "notiwind"
 import { ref, onMounted } from "vue"
 import { object, string } from "vue-types"
 import { Inertia } from '@inertiajs/inertia'
-import { Head, Link } from "@inertiajs/inertia-vue3"
+import { Head, Link} from "@inertiajs/inertia-vue3"
 import AppLayout from '@/layouts/apps.vue'
 import VInput from "@/components/VInput/index.vue"
 import VButton from "@/components/VButton/index.vue"
@@ -48,6 +48,7 @@ const props = defineProps({
     title: string(),
     additional: object()
 })
+
 
 const handleActiveAll = (sub_group, index) => {
     const selectId = sub_group[0]['group'] + '_' + index
@@ -177,7 +178,7 @@ onMounted(() => {
                     <div class="text-sm text-slate-500 mb-4">Fill in to give a name the role</div>
                     <VInput placeholder="Insert Role Name" label="Role Name" :required="true" v-model="form.role_name"
                         :errorMessage="formError.role_name" @update:modelValue="formError.role_name = ''"
-                        class="w-full sm:w-1/3 md:w-1/4 lg:w-1/5" />
+                        class="w-full sm:w-1/3 md:w-1/4 lg:w-1/5" :disabled="additional.is_demo && form.role_name === 'super admin'"/>
                 </div>
             </section>
 
@@ -210,7 +211,7 @@ onMounted(() => {
                                     'Active' : 'Active All'}}</div>
                                 <div class="form-switch">
                                     <input type="checkbox" :id="subGroup[0]['group'] + '_' + index" class="sr-only"
-                                        @change="handleActiveAll(subGroup, index)" :checked="activeChecker(subGroup)" />
+                                        @change="handleActiveAll(subGroup, index)" :checked="activeChecker(subGroup)" :disabled="additional.is_demo && form.role_name === 'super admin'"/>
                                     <label class="bg-slate-400" :for="subGroup[0]['group'] + '_' + index">
                                         <span class="bg-white shadow-sm" aria-hidden="true"></span>
                                         <span class="sr-only">Enable smart sync</span>

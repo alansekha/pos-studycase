@@ -21,7 +21,7 @@ class RoleManagementController extends Controller
     public function index()
     {
         return Inertia::render('admin/settings/role/index', [
-            "title" => 'POS | Role managements'
+            "title" => 'POS | Role managements',
         ]);
     }
 
@@ -54,7 +54,8 @@ class RoleManagementController extends Controller
             "additional" => [
                 'permission_list' => $this->roleManagementService->getPermissionList(),
                 'role' => $this->roleManagementService->findRoleById($id),
-                'role_has_permissions' => $this->roleManagementService->getRoleHasPermissions($id)
+                'role_has_permissions' => $this->roleManagementService->getRoleHasPermissions($id),
+                'is_demo' => config('app.is_demo')
             ]
         ]);
     }
